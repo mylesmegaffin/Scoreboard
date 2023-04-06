@@ -1,8 +1,6 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
-using static System.Formats.Asn1.AsnWriter;
-using System.Xml.Linq;
+
 
 namespace Scoreboard
 {
@@ -121,11 +119,11 @@ namespace Scoreboard
             Console.WriteLine("---------------------");
             Console.WriteLine("| Username | Score  |");
             Console.WriteLine("---------------------");
-            Console.WriteLine("|   {0}    |   {1}  |", HSName, highestScore);
+            Console.WriteLine("|   {0}    |   {1}  |", HSName.ToUpper(), highestScore);
             Console.WriteLine("---------------------");
-            Console.WriteLine("|   {0}    |   {1}  |", SName2, Score2);
+            Console.WriteLine("|   {0}    |   {1}  |", SName2.ToUpper(), Score2);
             Console.WriteLine("---------------------");
-            Console.WriteLine("|   {0}    |   {1}  |", SName3, Score3);
+            Console.WriteLine("|   {0}    |   {1}  |", SName3.ToUpper(), Score3);
             Console.WriteLine("---------------------");
         }
 
