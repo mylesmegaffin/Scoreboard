@@ -10,25 +10,30 @@ namespace Scoreboard
     {
         static void Main(string[] args)
         {
+            ReadScoreboard();
             SaveScore();
             ReadScoreboard();
+            Console.ReadKey();
         }
 
         public static void SaveScore()
         {
-
             while (true)
             {
-                //Getting input from the user
+                //userinput:username
                 Console.WriteLine("What is your Username (3 Letters):");
                 string username = Console.ReadLine();
+                //userinput:username Cant Contain ":" or else the scoreboard breaks
                 if (!username.Contains(":"))
                 {
+                    //userinput:username should be 3 letters or less (no reason other than makes the scoreboard prettier)
                     if(username.Length <= 3)
                     {
+                        //userinput:highscore
                         Console.WriteLine("What is your High Score:");
                         string highscore = Console.ReadLine();
 
+                        //If userinput:highscore is a number 
                         if (Int32.TryParse(highscore, out int numHighScore))
                         {
                             using (StreamWriter file = new StreamWriter(@"C:\Users\myles\source\repos\Scoreboard\Scoreboard\Scoreboard.txt", true))
@@ -37,16 +42,19 @@ namespace Scoreboard
                                 break;
                             }
                         }
+                        //If userinput:highscore is not a number
                         else
                         {
                             Console.WriteLine("High Score is not a number, Please Enter a number");
                         }
                     }
+                    //If userinput:username longer than 3
                     else
                     {
                         Console.WriteLine("Username Can NOT Be Longer than 3 Letters");
                     }
                 }
+                //If userinput:username contains ':'
                 else
                 {
                     Console.WriteLine("Username Cannot Contain ':', Please Enter a correct username");
@@ -74,7 +82,7 @@ namespace Scoreboard
                 {
                     if (i % 2 == 1)
                     {
-                        // Checking if the Score Top 3
+                        // Checking for the TOP 3 scores
                         Int32.TryParse(split[i], out int tryNum);
                         //Highest Score
                         if (tryNum > highestScore)
@@ -104,23 +112,21 @@ namespace Scoreboard
                 }
             }
             DisplayBoard(HSName, highestScore, SName2, Score2, SName3, Score3);
-
-            Console.ReadKey();
         }
 
+        //display top 3 scores in a "nice" format
         public static void DisplayBoard(string HSName, int highestScore, string SName2, int Score2,string SName3, int Score3)
         {
-            Console.WriteLine("--------------------");
-            Console.WriteLine("| Username | Score |");
-            Console.WriteLine("--------------------");
-            Console.WriteLine("|   {0}    |   {1} |", HSName, highestScore);
-            Console.WriteLine("--------------------");
-            Console.WriteLine("|   {0}    |   {1} |", SName2, Score2);
-            Console.WriteLine("--------------------");
-            Console.WriteLine("|   {0}    |   {1} |", SName3, Score3);
-            Console.WriteLine("--------------------");
-
-
+            Console.WriteLine(" H I G H - S C O R E ");
+            Console.WriteLine("---------------------");
+            Console.WriteLine("| Username | Score  |");
+            Console.WriteLine("---------------------");
+            Console.WriteLine("|   {0}    |   {1}  |", HSName, highestScore);
+            Console.WriteLine("---------------------");
+            Console.WriteLine("|   {0}    |   {1}  |", SName2, Score2);
+            Console.WriteLine("---------------------");
+            Console.WriteLine("|   {0}    |   {1}  |", SName3, Score3);
+            Console.WriteLine("---------------------");
         }
 
     }
