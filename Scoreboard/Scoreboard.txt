@@ -4,3 +4,7 @@ ETN:10
 NOT:121
 SDK:33
 cow:34
+BUT:35
+GIB:99
+Jim:11
+XXX:3

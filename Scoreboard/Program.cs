@@ -9,8 +9,10 @@ namespace Scoreboard
         static void Main(string[] args)
         {
             ReadScoreboard();
+            Console.WriteLine($"Players who Played: {NumberOfPlayer()}");
             SaveScore();
             ReadScoreboard();
+            Console.WriteLine($"Players who Played: {NumberOfPlayer()}");
             Console.ReadKey();
         }
 
@@ -125,6 +127,12 @@ namespace Scoreboard
             Console.WriteLine("---------------------");
             Console.WriteLine("|   {0}    |   {1}  |", SName3.ToUpper(), Score3);
             Console.WriteLine("---------------------");
+        }
+
+        public static int NumberOfPlayer()
+        {
+            string[] lines = File.ReadAllLines(@"C:\Users\myles\source\repos\Scoreboard\Scoreboard\Scoreboard.txt");
+            return lines.Length;
         }
 
     }
